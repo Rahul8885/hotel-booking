@@ -1,29 +1,39 @@
 import { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity, TextInput, Image, Alert, Modal } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { ArrowLeft, Calendar, Users, CreditCard, CircleCheck as CheckCircle, User, Mail, Phone } from 'lucide-react-native';
+import { ArrowLeft, Calendar, Users, CreditCard, CircleCheck as CheckCircle, User, Mail, Phone, LogIn } from 'lucide-react-native';
 import { hotels } from '@/data/hotels';
 import { Hotel } from '@/types/hotel';
+import { useAuth } from '@/contexts/AuthContext';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 
 export default function CheckoutScreen() {
   const { hotelId } = useLocalSearchParams<{ hotelId: string }>();
   const router = useRouter();
+  const { isAuthenticated, user } = useAuth();
   const [hotel, setHotel] = useState<Hotel | null>(null);
   const [checkInDate, setCheckInDate] = useState('2024-06-15');
   const [checkOutDate, setCheckOutDate] = useState('2024-06-22');
   const [guests, setGuests] = useState(2);
-  const [fullName, setFullName] = useState('Alex Johnson');
-  const [email, setEmail] = useState('alex.johnson@email.com');
-  const [phone, setPhone] = useState('+1 (555) 123-4567');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
-
+  const API_BASE_URL = 'http://13.222.49.166:3000/api'
   useEffect(() => {
     if (hotelId) {
       const foundHotel = hotels.find(h => h.id === hotelId);
       setHotel(foundHotel || null);
     }
   }, [hotelId]);
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      setFullName(user.name);
+      setEmail(user.email);
+      setPhone(user.phone || '');
+    }
+  }, [isAuthenticated, user]);
 
   const calculateNights = () => {
     const checkIn = new Date(checkInDate);
@@ -35,16 +45,56 @@ export default function CheckoutScreen() {
   const calculateTotal = () => {
     if (!hotel) return 0;
     const nights = calculateNights();
-    const subtotal = hotel.price * nights;
+    const subtotal = hotel.pricePerNight * nights;
     const taxes = subtotal * 0.12; // 12% tax
     const fees = 25; // Service fees
     return subtotal + taxes + fees;
   };
 
-  const handleConfirmBooking = () => {
+  const handleConfirmBooking = async () => {
     if (!fullName.trim() || !email.trim() || !phone.trim()) {
       Alert.alert('Error', 'Please fill in all required fields');
       return;
+    }
+     const response = await fetch(`${API_BASE_URL}/bookings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user?.token}` // Assuming user token is available
+        },
+        body: JSON.stringify({
+          guestDetails: {
+            fullName,
+            email,
+            phone,
+          },
+          hotelId: hotel?.id,
+          checkInDate,
+          checkOutDate,
+          guests,
+          totalAmount: calculateTotal(),
+        }),
+      });
+    const data = await response.json();
+    console.log('Booking response:', data);
+    if (data) {
+      const paymentIntent = await fetch(`${API_BASE_URL}/payment/create-intent`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user?.token}`,// Assuming user token is available
+        },
+        body: JSON.stringify({
+          bookingId: data.booking.id, // Use the booking ID from the response
+          amount: calculateTotal() * 100, // Convert to cents
+          userId: user, // Assuming user ID is available
+          // currency: 'usd',
+          // description: `Booking for ${hotel?.name} from ${checkInDate} to ${checkOutDate}`,
+        }),
+
+          // 
+      });
+      console.log('Payment intent response:', paymentIntent.json());
     }
     setShowConfirmation(true);
   };
@@ -70,6 +120,10 @@ export default function CheckoutScreen() {
     router.back();
   };
 
+  const handleSignIn = () => {
+    router.push('/auth');
+  };
+
   if (!hotel) {
     return (
       <SafeAreaView style={styles.container}>
@@ -83,8 +137,37 @@ export default function CheckoutScreen() {
     );
   }
 
+  // Show sign-in prompt if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Animated.View entering={FadeInUp.delay(100)} style={styles.header}>
+          <TouchableOpacity style={styles.backButtonHeader} onPress={handleBack}>
+            <ArrowLeft color="#111827" size={24} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Checkout</Text>
+          <View style={styles.placeholder} />
+        </Animated.View>
+
+        <Animated.View entering={FadeInDown.delay(200)} style={styles.signInPrompt}>
+          <View style={styles.signInIcon}>
+            <LogIn color="#6B7280" size={48} />
+          </View>
+          <Text style={styles.signInTitle}>Sign in to continue booking</Text>
+          <Text style={styles.signInSubtitle}>
+            You need to be signed in to complete your hotel reservation
+          </Text>
+          <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
+            <LogIn color="#ffffff" size={20} />
+            <Text style={styles.signInButtonText}>Sign In</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      </SafeAreaView>
+    );
+  }
+
   const nights = calculateNights();
-  const subtotal = hotel.price * nights;
+  const subtotal = hotel.pricePerNight * nights;
   const taxes = subtotal * 0.12;
   const fees = 25;
   const total = calculateTotal();
@@ -103,11 +186,11 @@ export default function CheckoutScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         {/* Hotel Summary */}
         <Animated.View entering={FadeInDown.delay(200)} style={styles.hotelSummary}>
-          <Image source={{ uri: hotel.image }} style={styles.hotelImage} />
+          <Image source={{ uri: hotel.imageUrl }} style={styles.hotelImage} />
           <View style={styles.hotelInfo}>
             <Text style={styles.hotelName} numberOfLines={2}>{hotel.name}</Text>
-            <Text style={styles.hotelLocation}>{hotel.location}</Text>
-            <Text style={styles.hotelPrice}>${hotel.price}/night</Text>
+            <Text style={styles.hotelLocation}>{hotel.address} {hotel?.city} {hotel.country}</Text>
+            <Text style={styles.hotelPrice}>${hotel.pricePerNight}/night</Text>
           </View>
         </Animated.View>
 
@@ -211,7 +294,7 @@ export default function CheckoutScreen() {
           <Text style={styles.sectionTitle}>Price Breakdown</Text>
           
           <View style={styles.priceRow}>
-            <Text style={styles.priceLabel}>${hotel.price} × {nights} nights</Text>
+            <Text style={styles.priceLabel}>${hotel.pricePerNight} × {nights} nights</Text>
             <Text style={styles.priceValue}>${subtotal.toLocaleString()}</Text>
           </View>
           
@@ -302,6 +385,51 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 100,
+  },
+  signInPrompt: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 40,
+  },
+  signInIcon: {
+    width: 80,
+    height: 80,
+    backgroundColor: '#F3F4F6',
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  signInTitle: {
+    fontSize: 24,
+    fontFamily: 'Inter-Bold',
+    color: '#111827',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  signInSubtitle: {
+    fontSize: 16,
+    fontFamily: 'Inter-Regular',
+    color: '#6B7280',
+    textAlign: 'center',
+    lineHeight: 24,
+    marginBottom: 32,
+  },
+  signInButton: {
+    backgroundColor: '#2563EB',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    borderRadius: 12,
+  },
+  signInButtonText: {
+    fontSize: 18,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+    marginLeft: 8,
   },
   errorContainer: {
     flex: 1,

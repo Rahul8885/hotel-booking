@@ -111,7 +111,7 @@ export default function HotelDetailScreen() {
               <Text style={styles.hotelName}>{hotel.name}</Text>
               <View style={styles.locationRow}>
                 <MapPin color="#6B7280" size={16} />
-                <Text style={styles.location}>{hotel.location}</Text>
+                <Text style={styles.location}>{hotel.address} {hotel?.country} {hotel?.city}</Text>
               </View>
             </View>
             <View style={styles.ratingContainer}>
@@ -124,12 +124,12 @@ export default function HotelDetailScreen() {
           <Text style={styles.description}>{hotel.description}</Text>
 
           {/* Check-in/out Times */}
-          <Animated.View entering={FadeInDown.delay(300)} style={styles.timesContainer}>
+          {/* <Animated.View entering={FadeInDown.delay(300)} style={styles.timesContainer}>
             <View style={styles.timeItem}>
               <Clock color="#2563EB" size={20} />
               <View style={styles.timeContent}>
                 <Text style={styles.timeLabel}>Check-in</Text>
-                <Text style={styles.timeValue}>{hotel.checkIn}</Text>
+                <Text style={styles.timeValue}>{hotel.ch}</Text>
               </View>
             </View>
             <View style={styles.timeItem}>
@@ -139,7 +139,7 @@ export default function HotelDetailScreen() {
                 <Text style={styles.timeValue}>{hotel.checkOut}</Text>
               </View>
             </View>
-          </Animated.View>
+          </Animated.View> */}
 
           {/* Amenities */}
           <Animated.View entering={FadeInDown.delay(400)} style={styles.amenitiesContainer}>
@@ -169,10 +169,10 @@ export default function HotelDetailScreen() {
           <Animated.View entering={FadeInDown.delay(600)} style={styles.pricingContainer}>
             <View style={styles.priceRow}>
               <View>
-                <Text style={styles.priceAmount}>${hotel.price}</Text>
+                <Text style={styles.priceAmount}>${hotel.pricePerNight}</Text>
                 <Text style={styles.priceLabel}>per night</Text>
               </View>
-              <Text style={styles.hotelType}>{hotel.type}</Text>
+              {/* <Text style={styles.hotelType}>{hotel.type}</Text> */}
             </View>
           </Animated.View>
         </Animated.View>

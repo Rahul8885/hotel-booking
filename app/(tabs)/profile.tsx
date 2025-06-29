@@ -1,15 +1,27 @@
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
-import { User, Calendar, MapPin, CreditCard, Settings, LogOut, Clock } from 'lucide-react-native';
-import { currentUser, userBookings } from '@/data/user';
+import { User, Calendar, MapPin, CreditCard, Settings, LogOut, Clock, LogIn } from 'lucide-react-native';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'expo-router';
+import { userBookings } from '@/data/user';
 import Animated, { FadeInDown, FadeInRight } from 'react-native-reanimated';
 
 export default function ProfileScreen() {
+  const { user, isAuthenticated, signOut } = useAuth();
+  const router = useRouter();
+
+  const handleSignIn = () => {
+    router.push({
+      pathname: '/auth/signin',
+      params: { redirect: 'profile' }
+    });
+  };
+
   const handleSettingsPress = () => {
     console.log('Settings pressed');
   };
 
-  const handleLogoutPress = () => {
-    console.log('Logout pressed');
+  const handleLogoutPress = async () => {
+    await signOut();
   };
 
   const getStatusColor = (status: string) => {
@@ -38,20 +50,41 @@ export default function ProfileScreen() {
     }
   };
 
+  // Show sign-in prompt if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Animated.View entering={FadeInDown.delay(100)} style={styles.signInPrompt}>
+          <View style={styles.signInIcon}>
+            <User color="#6B7280" size={48} />
+          </View>
+          <Text style={styles.signInTitle}>Sign in to view your profile</Text>
+          <Text style={styles.signInSubtitle}>
+            Access your bookings, manage your account, and get personalized recommendations
+          </Text>
+          <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
+            <LogIn color="#ffffff" size={20} />
+            <Text style={styles.signInButtonText}>Sign In</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         {/* Profile Header */}
         <Animated.View entering={FadeInDown.delay(100)} style={styles.profileHeader}>
           <View style={styles.avatarContainer}>
-            <Image source={{ uri: currentUser.avatar }} style={styles.avatar} />
+            <Image source={{ uri: user.avatar || 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400' }} style={styles.avatar} />
             <View style={styles.onlineIndicator} />
           </View>
           <View style={styles.profileInfo}>
-            <Text style={styles.userName}>{currentUser.name}</Text>
-            <Text style={styles.userEmail}>{currentUser.email}</Text>
+            <Text style={styles.userName}>{user.name}</Text>
+            <Text style={styles.userEmail}>{user.email}</Text>
             <Text style={styles.joinDate}>
-              Member since {new Date(currentUser.joinDate).getFullYear()}
+              Member since {new Date(user.joinDate).getFullYear()}
             </Text>
           </View>
         </Animated.View>
@@ -177,6 +210,51 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 100,
+  },
+  signInPrompt: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 40,
+  },
+  signInIcon: {
+    width: 80,
+    height: 80,
+    backgroundColor: '#F3F4F6',
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  signInTitle: {
+    fontSize: 24,
+    fontFamily: 'Inter-Bold',
+    color: '#111827',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  signInSubtitle: {
+    fontSize: 16,
+    fontFamily: 'Inter-Regular',
+    color: '#6B7280',
+    textAlign: 'center',
+    lineHeight: 24,
+    marginBottom: 32,
+  },
+  signInButton: {
+    backgroundColor: '#2563EB',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    borderRadius: 12,
+  },
+  signInButtonText: {
+    fontSize: 18,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+    marginLeft: 8,
   },
   profileHeader: {
     flexDirection: 'row',

@@ -1,21 +1,17 @@
 export interface Hotel {
   id: string;
   name: string;
-  location: string;
-  price: number;
+  address: string;
+  city: string;
+  country: string;
+  pricePerNight: number;
   rating: number;
   reviews: number;
-  image: string;
+  imageUrl: string;
   images: string[];
   description: string;
   amenities: string[];
-  coordinates: {
-    latitude: number;
-    longitude: number;
-  };
-  type: string;
-  checkIn: string;
-  checkOut: string;
+  
 }
 
 export interface Booking {

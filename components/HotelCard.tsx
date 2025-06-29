@@ -43,7 +43,7 @@ export default function HotelCard({ hotel, index }: HotelCardProps) {
         onPressOut={onPressOut}
         activeOpacity={0.9}
       >
-        <Image source={{ uri: hotel.image }} style={styles.image} />
+        <Image source={{ uri: hotel.imageUrl }} style={styles.image} />
         <View style={styles.content}>
           <View style={styles.header}>
             <Text style={styles.name} numberOfLines={1}>
@@ -58,13 +58,13 @@ export default function HotelCard({ hotel, index }: HotelCardProps) {
           <View style={styles.locationRow}>
             <MapPin color="#6B7280" size={14} />
             <Text style={styles.location} numberOfLines={1}>
-              {hotel.location}
+              {hotel.address}, {hotel.city}, {hotel.country}
             </Text>
           </View>
           
           <View style={styles.footer}>
             <View>
-              <Text style={styles.price}>${hotel.price}</Text>
+              <Text style={styles.price}>${hotel.pricePerNight}</Text>
               <Text style={styles.priceLabel}>per night</Text>
             </View>
             <Text style={styles.reviews}>
