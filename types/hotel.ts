@@ -6,7 +6,7 @@ export interface Hotel {
   country: string;
   pricePerNight: number;
   rating: number;
-  reviews: number;
+  // reviews: number;
   imageUrl: string;
   images: string[];
   description: string;

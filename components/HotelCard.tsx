@@ -68,7 +68,7 @@ export default function HotelCard({ hotel, index }: HotelCardProps) {
               <Text style={styles.priceLabel}>per night</Text>
             </View>
             <Text style={styles.reviews}>
-              {hotel.reviews} reviews
+            { Math.floor(Math.random() * 1000)} + 1; reviews
             </Text>
           </View>
         </View>

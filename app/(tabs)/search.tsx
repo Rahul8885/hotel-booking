@@ -42,8 +42,8 @@ export default function SearchScreen() {
           return b.pricePerNight - a.pricePerNight;
         case 'rating':
           return b.rating - a.rating;
-        case 'reviews':
-          return b.reviews - a.reviews;
+        // case 'reviews':
+        //   return b.reviews - a.reviews;
         default:
           return 0;
       }
