@@ -77,7 +77,7 @@ export default function CheckoutScreen() {
       });
     const data = await response.json();
     console.log('Booking response:', data);
-    if (data) {
+    if (data.data.booking.id) {
       const paymentIntent = await fetch(`${API_BASE_URL}/payment/create-intent`, {
         method: 'POST',
         headers: {
@@ -85,16 +85,17 @@ export default function CheckoutScreen() {
           'Authorization': `Bearer ${user?.token}`,// Assuming user token is available
         },
         body: JSON.stringify({
-          bookingId: data.booking.id, // Use the booking ID from the response
+          bookingId: data.data.booking.id, // Use the booking ID from the response
           amount: calculateTotal() * 100, // Convert to cents
-          userId: user, // Assuming user ID is available
+         
           // currency: 'usd',
           // description: `Booking for ${hotel?.name} from ${checkInDate} to ${checkOutDate}`,
         }),
 
           // 
       });
-      console.log('Payment intent response:', paymentIntent.json());
+      const paymentRes = await paymentIntent.json();
+      console.log('Payment intent response:', paymentRes);
     }
     setShowConfirmation(true);
   };
