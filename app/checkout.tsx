@@ -18,6 +18,8 @@ export default function CheckoutScreen() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [paymentIntent, setPaymentIntent] = useState(null);
+  const [bookingId, setBookingId] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const API_BASE_URL = 'http://13.222.49.166:3000/api'
   useEffect(() => {
@@ -95,15 +97,36 @@ export default function CheckoutScreen() {
           // 
       });
       const paymentRes = await paymentIntent.json();
+      if (!paymentIntent.ok) {
+        Alert.alert('Payment Error', paymentRes.message || 'Failed to create payment intent');
+        return;
+      }
+      setPaymentIntent(paymentRes.data?.paymentIntent?.id);
+      setBookingId(data.data.booking.id); // Store booking ID for later use
       console.log('Payment intent response:', paymentRes);
     }
     setShowConfirmation(true);
   };
 
-  const handlePaymentComplete = () => {
+  const handlePaymentComplete = async () => {
     setShowConfirmation(false);
     // In a real app, this would process the payment
-    setTimeout(() => {
+    const completePayment = await fetch(`${API_BASE_URL}/payment/confirm`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user?.token}`, // Assuming user token is available
+        },
+        body: JSON.stringify({
+          bookingId: bookingId,
+          paymentIntentId: paymentIntent,
+          paymentMethod: 'card', // Assuming card payment
+        }),
+      });
+      if (!completePayment.ok) {
+        Alert.alert('Payment Error', 'Failed to confirm payment. Please try again.');
+        return;
+      }
       Alert.alert(
         'Booking Confirmed!',
         'Your hotel reservation has been confirmed. Check your email for details.',
@@ -114,7 +137,7 @@ export default function CheckoutScreen() {
           }
         ]
       );
-    }, 1000);
+  
   };
 
   const handleBack = () => {
