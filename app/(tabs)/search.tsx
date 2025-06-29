@@ -21,15 +21,15 @@ export default function SearchScreen() {
     if (searchQuery.trim()) {
       filtered = filtered.filter(hotel => 
         hotel.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        hotel.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        hotel.type.toLowerCase().includes(searchQuery.toLowerCase())
+        hotel.address.toLowerCase().includes(searchQuery.toLowerCase()) 
+        // hotel.type.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
     // Apply type filter
     if (filterBy !== 'all') {
       filtered = filtered.filter(hotel => 
-        hotel.type.toLowerCase() === filterBy.toLowerCase()
+        hotel.city.toLowerCase() === filterBy.toLowerCase()
       );
     }
 
@@ -37,9 +37,9 @@ export default function SearchScreen() {
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
         case 'price-low':
-          return a.price - b.price;
+          return a.pricePerNight - b.pricePerNight;
         case 'price-high':
-          return b.price - a.price;
+          return b.pricePerNight - a.pricePerNight;
         case 'rating':
           return b.rating - a.rating;
         case 'reviews':

@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, User, Search, MapPin } from 'lucide-react-native';
+import { Chrome as Home, User, Search, MapPin, Ticket } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
@@ -46,6 +46,15 @@ export default function TabLayout() {
           title: 'Explore',
           tabBarIcon: ({ color, size }) => (
             <MapPin color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Bookings"
+        options={{
+          title: 'Bookings',
+          tabBarIcon: ({ color, size }) => (
+            <Ticket color={color} size={size} />
           ),
         }}
       />
