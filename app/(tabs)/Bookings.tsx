@@ -5,6 +5,7 @@ import { useRouter } from 'expo-router';
 // import { userBookings } from '@/data/user';
 import Animated, { FadeInDown, FadeInRight } from 'react-native-reanimated';
 import { useEffect, useState } from 'react';
+import CheckInnLogo from '../CheckInnLogo';
 
 export default function BookingScreen() {
   const { user, isAuthenticated, signOut } = useAuth();
@@ -85,9 +86,9 @@ export default function BookingScreen() {
     return (
       <SafeAreaView style={styles.container}>
         <Animated.View entering={FadeInDown.delay(100)} style={styles.signInPrompt}>
-          <View style={styles.signInIcon}>
-            <User color="#6B7280" size={48} />
-          </View>
+         
+            <CheckInnLogo width={160} height={40} />
+    
           <Text style={styles.signInTitle}>Sign in to view your profile</Text>
           <Text style={styles.signInSubtitle}>
             Access your bookings, manage your account, and get personalized recommendations
@@ -127,7 +128,7 @@ export default function BookingScreen() {
           <View style={styles.statDivider} />
           <View style={styles.statItem}>
             <Text style={styles.statNumber}>
-              ${userBookings.reduce((sum, booking) => sum + booking?.totalAmount, 0).toLocaleString()}
+              ${userBookings.reduce((sum, booking) => sum + parseFloat(booking?.totalAmount), 0).toLocaleString()}
             </Text>
             <Text style={styles.statLabel}>Total Spent</Text>
           </View>

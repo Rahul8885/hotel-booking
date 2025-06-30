@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import { ArrowLeft, Eye, EyeOff, Mail, Lock, User, Phone } from 'lucide-react-native';
 import { useAuth } from '@/contexts/AuthContext';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import CheckInnLogo from '../CheckInnLogo';
 
 export default function SignUpScreen() {
   const router = useRouter();
@@ -109,6 +110,7 @@ export default function SignUpScreen() {
 
       <View style={styles.content}>
         <Animated.View entering={FadeInDown.delay(200)} style={styles.welcomeSection}>
+          <CheckInnLogo width={160} height={40} />
           <Text style={styles.title}>Create Account</Text>
           <Text style={styles.subtitle}>Join us and start booking amazing hotels</Text>
         </Animated.View>

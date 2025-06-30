@@ -15,7 +15,7 @@ export default function ExploreScreen() {
   const router = useRouter();
 
   const topRatedHotels = hotels.filter(hotel => hotel.rating >= 4.8).slice(0, 3);
-  const luxuryHotels = hotels.filter(hotel => hotel.price >= 500).slice(0, 3);
+  const luxuryHotels = hotels.filter(hotel => hotel.pricePerNight >= 500).slice(0, 3);
 
   const handleDestinationPress = (destination: string) => {
     // Navigate to search with destination filter
@@ -78,15 +78,15 @@ export default function ExploreScreen() {
                 style={styles.hotelListItem}
                 onPress={() => handleHotelPress(hotel.id)}
               >
-                <Image source={{ uri: hotel.image }} style={styles.hotelListImage} />
+                <Image source={{ uri: hotel.imageUrl }} style={styles.hotelListImage} />
                 <View style={styles.hotelListContent}>
                   <Text style={styles.hotelListName}>{hotel.name}</Text>
                   <View style={styles.hotelListLocation}>
                     <MapPin color="#6B7280" size={14} />
-                    <Text style={styles.hotelListLocationText}>{hotel.location}</Text>
+                    <Text style={styles.hotelListLocationText}>{hotel.address} {hotel?.city} {hotel?.country}</Text>
                   </View>
                   <View style={styles.hotelListFooter}>
-                    <Text style={styles.hotelListPrice}>${hotel.price}/night</Text>
+                    <Text style={styles.hotelListPrice}>${hotel.pricePerNight}/night</Text>
                     <Text style={styles.hotelListRating}>★ {hotel.rating}</Text>
                   </View>
                 </View>
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8FAFC',
+    paddingTop: 20,
   },
   scrollContent: {
     paddingBottom: 100,

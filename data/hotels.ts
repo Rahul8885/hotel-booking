@@ -2,7 +2,9 @@ import { Hotel } from '@/types/hotel';
 
 
 
-export const hotels: Hotel[] = [
+// ===========================================
+// src/utils/mockData.js
+export const hotels:Hotel[] = [
   {
     "id": "1",
     "name": "Smith Group Hotel",
@@ -12,11 +14,11 @@ export const hotels: Hotel[] = [
     "country": "Austria",
     "pricePerNight": 200.85,
     "rating": 5.0,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,Kleinfort",
+    "imageUrl": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,1",
-      "https://source.unsplash.com/800x600/?hotel,lobby,1",
-      "https://source.unsplash.com/800x600/?hotel,view,1"
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Library",
@@ -35,11 +37,11 @@ export const hotels: Hotel[] = [
     "country": "Suriname",
     "pricePerNight": 274.02,
     "rating": 4.9,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,Cameronview",
+    "imageUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,2",
-      "https://source.unsplash.com/800x600/?hotel,lobby,2",
-      "https://source.unsplash.com/800x600/?hotel,view,2"
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Beach Access",
@@ -61,11 +63,11 @@ export const hotels: Hotel[] = [
     "country": "Qatar",
     "pricePerNight": 162.09,
     "rating": 3.9,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,Garciaborough",
+    "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,3",
-      "https://source.unsplash.com/800x600/?hotel,lobby,3",
-      "https://source.unsplash.com/800x600/?hotel,view,3"
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Meeting Rooms",
@@ -85,11 +87,11 @@ export const hotels: Hotel[] = [
     "country": "Switzerland",
     "pricePerNight": 118.9,
     "rating": 4.2,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,LakeVictoria",
+    "imageUrl": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,4",
-      "https://source.unsplash.com/800x600/?hotel,lobby,4",
-      "https://source.unsplash.com/800x600/?hotel,view,4"
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1577985043690-8c9f54ba7ccd?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Pool",
@@ -110,11 +112,11 @@ export const hotels: Hotel[] = [
     "country": "Macedonia",
     "pricePerNight": 290.29,
     "rating": 3.6,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,Kyleville",
+    "imageUrl": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,5",
-      "https://source.unsplash.com/800x600/?hotel,lobby,5",
-      "https://source.unsplash.com/800x600/?hotel,view,5"
+      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Business Center",
@@ -134,11 +136,11 @@ export const hotels: Hotel[] = [
     "country": "Samoa",
     "pricePerNight": 232.7,
     "rating": 4.8,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,Morrisbury",
+    "imageUrl": "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,6",
-      "https://source.unsplash.com/800x600/?hotel,lobby,6",
-      "https://source.unsplash.com/800x600/?hotel,view,6"
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1502780402662-acc01917949e?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Beach Access",
@@ -159,11 +161,11 @@ export const hotels: Hotel[] = [
     "country": "Heard Island and McDonald Islands",
     "pricePerNight": 250.02,
     "rating": 4.7,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,EastSteven",
+    "imageUrl": "https://images.unsplash.com/photo-1520637836862-4d197d17c52a?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,7",
-      "https://source.unsplash.com/800x600/?hotel,lobby,7",
-      "https://source.unsplash.com/800x600/?hotel,view,7"
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Spa",
@@ -185,11 +187,11 @@ export const hotels: Hotel[] = [
     "country": "Mongolia",
     "pricePerNight": 202.44,
     "rating": 3.9,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,NorthJesuschester",
+    "imageUrl": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,8",
-      "https://source.unsplash.com/800x600/?hotel,lobby,8",
-      "https://source.unsplash.com/800x600/?hotel,view,8"
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Restaurant",
@@ -209,11 +211,11 @@ export const hotels: Hotel[] = [
     "country": "Kuwait",
     "pricePerNight": 183.91,
     "rating": 4.0,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,NewKimfurt",
+    "imageUrl": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,9",
-      "https://source.unsplash.com/800x600/?hotel,lobby,9",
-      "https://source.unsplash.com/800x600/?hotel,view,9"
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Parking",
@@ -233,11 +235,11 @@ export const hotels: Hotel[] = [
     "country": "Nigeria",
     "pricePerNight": 290.11,
     "rating": 3.8,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,SouthTina",
+    "imageUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,10",
-      "https://source.unsplash.com/800x600/?hotel,lobby,10",
-      "https://source.unsplash.com/800x600/?hotel,view,10"
+      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1502780402662-acc01917949e?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Water Sports",
@@ -257,11 +259,11 @@ export const hotels: Hotel[] = [
     "country": "United Arab Emirates",
     "pricePerNight": 214.61,
     "rating": 4.3,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,Michelleview",
+    "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,11",
-      "https://source.unsplash.com/800x600/?hotel,lobby,11",
-      "https://source.unsplash.com/800x600/?hotel,view,11"
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Pet Friendly",
@@ -282,11 +284,11 @@ export const hotels: Hotel[] = [
     "country": "Lebanon",
     "pricePerNight": 281.05,
     "rating": 4.3,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,NewDanielstad",
+    "imageUrl": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,12",
-      "https://source.unsplash.com/800x600/?hotel,lobby,12",
-      "https://source.unsplash.com/800x600/?hotel,view,12"
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1577985043690-8c9f54ba7ccd?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1520637836862-4d197d17c52a?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Airport Shuttle",
@@ -307,11 +309,11 @@ export const hotels: Hotel[] = [
     "country": "Libyan Arab Jamahiriya",
     "pricePerNight": 235.23,
     "rating": 4.4,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,NewLee",
+    "imageUrl": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,13",
-      "https://source.unsplash.com/800x600/?hotel,lobby,13",
-      "https://source.unsplash.com/800x600/?hotel,view,13"
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Library",
@@ -331,11 +333,11 @@ export const hotels: Hotel[] = [
     "country": "Belgium",
     "pricePerNight": 120.15,
     "rating": 4.4,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,Oconnellland",
+    "imageUrl": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,14",
-      "https://source.unsplash.com/800x600/?hotel,lobby,14",
-      "https://source.unsplash.com/800x600/?hotel,view,14"
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Pool",
@@ -356,11 +358,11 @@ export const hotels: Hotel[] = [
     "country": "Sudan",
     "pricePerNight": 114.16,
     "rating": 4.1,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,NewMatthew",
+    "imageUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,15",
-      "https://source.unsplash.com/800x600/?hotel,lobby,15",
-      "https://source.unsplash.com/800x600/?hotel,view,15"
+      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Beach Access",
@@ -379,11 +381,11 @@ export const hotels: Hotel[] = [
     "country": "Bolivia",
     "pricePerNight": 229.78,
     "rating": 4.3,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,SouthEmily",
+    "imageUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,16",
-      "https://source.unsplash.com/800x600/?hotel,lobby,16",
-      "https://source.unsplash.com/800x600/?hotel,view,16"
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1502780402662-acc01917949e?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Pet Friendly",
@@ -405,11 +407,11 @@ export const hotels: Hotel[] = [
     "country": "Mali",
     "pricePerNight": 97.64,
     "rating": 4.8,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,SouthAlexville",
+    "imageUrl": "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,17",
-      "https://source.unsplash.com/800x600/?hotel,lobby,17",
-      "https://source.unsplash.com/800x600/?hotel,view,17"
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Gym",
@@ -430,11 +432,11 @@ export const hotels: Hotel[] = [
     "country": "Dominican Republic",
     "pricePerNight": 250.09,
     "rating": 4.6,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,PortFeliciamouth",
+    "imageUrl": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,18",
-      "https://source.unsplash.com/800x600/?hotel,lobby,18",
-      "https://source.unsplash.com/800x600/?hotel,view,18"
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1577985043690-8c9f54ba7ccd?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1520637836862-4d197d17c52a?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Room Service",
@@ -454,11 +456,11 @@ export const hotels: Hotel[] = [
     "country": "Pitcairn Islands",
     "pricePerNight": 253.28,
     "rating": 4.1,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,PortStephen",
+    "imageUrl": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,19",
-      "https://source.unsplash.com/800x600/?hotel,lobby,19",
-      "https://source.unsplash.com/800x600/?hotel,view,19"
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Bar",
@@ -477,11 +479,11 @@ export const hotels: Hotel[] = [
     "country": "Singapore",
     "pricePerNight": 110.71,
     "rating": 3.8,
-    "imageUrl": "https://source.unsplash.com/800x600/?hotel,NewTimothyton",
+    "imageUrl": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop",
     "images": [
-      "https://source.unsplash.com/800x600/?hotel,room,20",
-      "https://source.unsplash.com/800x600/?hotel,lobby,20",
-      "https://source.unsplash.com/800x600/?hotel,view,20"
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop"
     ],
     "amenities": [
       "Hiking",
@@ -492,4 +494,5 @@ export const hotels: Hotel[] = [
       "Business Center"
     ]
   }
-];
+]
+

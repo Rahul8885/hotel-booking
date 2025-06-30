@@ -4,12 +4,13 @@ import { useRouter } from 'expo-router';
 import { ArrowLeft, Eye, EyeOff, Mail, Lock } from 'lucide-react-native';
 import { useAuth } from '@/contexts/AuthContext';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import CheckInnLogo from '../CheckInnLogo';
 
 export default function SignInScreen() {
   const router = useRouter();
   const { signIn } = useAuth();
-  const [email, setEmail] = useState('alex@example.com'); // Pre-filled for demo
-  const [password, setPassword] = useState('password123'); // Pre-filled for demo
+  const [email, setEmail] = useState('rahulakubattini3306@gmail.com'); // Pre-filled for demo
+  const [password, setPassword] = useState('Rahul@2002'); // Pre-filled for demo
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string; general?: string }>({});
@@ -74,6 +75,7 @@ export default function SignInScreen() {
 
       <View style={styles.content}>
         <Animated.View entering={FadeInDown.delay(200)} style={styles.welcomeSection}>
+          <CheckInnLogo width={160} height={40} />
           <Text style={styles.title}>Welcome back!</Text>
           <Text style={styles.subtitle}>Sign in to your account to continue</Text>
         </Animated.View>
@@ -157,8 +159,8 @@ export default function SignInScreen() {
 
           <View style={styles.demoInfo}>
             <Text style={styles.demoTitle}>Demo Credentials:</Text>
-            <Text style={styles.demoText}>Email: alex@example.com</Text>
-            <Text style={styles.demoText}>Password: password123</Text>
+            <Text style={styles.demoText}>Email: rahulakubattini3306@gmail.com</Text>
+            <Text style={styles.demoText}>Password: Rahul@2002</Text>
           </View>
         </Animated.View>
       </View>
@@ -200,6 +202,7 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     paddingBottom: 32,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 28,
