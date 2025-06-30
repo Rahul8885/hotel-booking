@@ -11,7 +11,7 @@ export default function ProfileScreen() {
   const { user, isAuthenticated, signOut } = useAuth();
   const [userBookings, setUserBookings] = useState([]);
  const token = user?.token; // Assuming you have a token in your user object
-  const API_BASE_URL = 'http://13.222.49.166:3000/api'
+  const API_BASE_URL = 'https://717b-13-222-49-166.ngrok-free.app/api'
   const router = useRouter();
    useEffect(() => {
     const fetchBookings = async () => {

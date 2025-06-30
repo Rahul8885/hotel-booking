@@ -21,7 +21,7 @@ export default function CheckoutScreen() {
   const [paymentIntent, setPaymentIntent] = useState(null);
   const [bookingId, setBookingId] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const API_BASE_URL = 'http://13.222.49.166:3000/api'
+  const API_BASE_URL = 'https://717b-13-222-49-166.ngrok-free.app/api'
   useEffect(() => {
     if (hotelId) {
       const foundHotel = hotels.find(h => h.id === hotelId);

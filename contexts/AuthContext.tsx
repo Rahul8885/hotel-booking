@@ -22,7 +22,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const STORAGE_KEY = '@hotel_app_user';
-const API_BASE_URL = 'http://13.222.49.166:3000/api/auth'; // <-- replace this with your actual backend URL
+const API_BASE_URL = 'https://717b-13-222-49-166.ngrok-free.app/api/auth'; // <-- replace this with your actual backend URL
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -80,7 +80,7 @@ if (!userPayload) {
       return { success: true };
     } catch (error) {
       console.error('Login error:', error);
-      return { success: false, error: 'Sign in failed. Please try again.' };
+      return { success: false, error: JSON.stringify(error) || 'Sign in failed. Please try again.' };
     }
   };
 

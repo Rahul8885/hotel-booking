@@ -10,7 +10,7 @@ import CheckInnLogo from '../CheckInnLogo';
 export default function BookingScreen() {
   const { user, isAuthenticated, signOut } = useAuth();
   const router = useRouter();
-  const API_BASE_URL = 'http://13.222.49.166:3000/api'
+  const API_BASE_URL = 'http://ec2-13-222-49-166.compute-1.amazonaws.com:3000/api'
   const [userBookings, setUserBookings] = useState([])
   const token = user?.token; // <- assuming you have a token in your user object
  useEffect(() => {

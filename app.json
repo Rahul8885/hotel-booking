@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "CheckInn",
-    "slug": "CheckInn",
+    "slug": "HotelBookingApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
@@ -14,7 +14,13 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "android": {
-      "package": "com.rahul.CheckInn"
+      "package": "com.rahul.CheckInn",
+      "usesCleartextTraffic": true,
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_WIFI_STATE"
+      ]
     },
     "ios": {
       "supportsTablet": true
@@ -27,7 +33,15 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+      "expo-build-properties",
+      {
+        "android": {
+          "networkSecurityConfig": "./network_security_config.xml"
+        }
+      }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
@@ -37,6 +51,7 @@
       "eas": {
         "projectId": "ee16bdd9-2c31-4a0c-bf29-174940594d18"
       }
-    }
+    },
+    "owner": "rahul2001"
   }
 }
