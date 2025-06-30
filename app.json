@@ -1,15 +1,20 @@
 {
   "expo": {
-    "name": "HotelBookingApp",
-    "slug": "HotelBookingApp",
+    "name": "CheckInn",
+    "slug": "CheckInn",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/logo.png",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "android": {
-      "package": "com.rahul.hotelbookingapp"
+      "package": "com.rahul.CheckInn"
     },
     "ios": {
       "supportsTablet": true
